@@ -1,0 +1,23 @@
+{
+  "id": "spark-mesos",
+  "instances": 1,
+  "cpus": 0.5,
+  "mem": 512.0,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "mymesos/spark-mesos:latest",
+      "forcePullImage": true,
+      "network": "HOST"
+    }
+  },
+  "env": {
+    "SPARK_MESOS_MASTER_URL": "mesos://zk://localhost:2181/mesos",
+    "SPARK_ZK_URL": "localhost:2181"
+  },
+  "healthChecks": [
+    {
+      "protocol": "TCP"
+    }
+  ]
+}
