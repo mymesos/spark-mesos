@@ -3,13 +3,24 @@
   "instances": 1,
   "cpus": 0.5,
   "mem": 512.0,
+  "ports": [
+    31000,
+    31001
+  ],
+  "requirePorts": true,
   "container": {
     "type": "DOCKER",
     "docker": {
       "image": "mymesos/spark-mesos:latest",
-      "forcePullImage": true,
       "network": "HOST"
-    }
+    },
+    "volumes": [
+      {
+        "containerPath": "/etc/localtime",
+        "hostPath": "/etc/localtime",
+        "mode": "RO"
+      }
+    ]
   },
   "env": {
     "SPARK_MESOS_MASTER_URL": "mesos://zk://localhost:2181/mesos",
